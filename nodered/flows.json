@@ -1,0 +1,223 @@
+[
+    {
+        "id": "1447ecba0f7f7ce8",
+        "type": "tab",
+        "label": "Flow 1",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
+        "id": "95266cc90979a8ac",
+        "type": "tab",
+        "label": "Flow 2",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
+        "id": "acc9c98f2b9397da",
+        "type": "mqtt-broker",
+        "name": "",
+        "broker": "mosquitto",
+        "port": 1883,
+        "clientid": "",
+        "autoConnect": true,
+        "usetls": false,
+        "protocolVersion": 4,
+        "keepalive": 60,
+        "cleansession": true,
+        "autoUnsubscribe": true,
+        "birthTopic": "",
+        "birthQos": "0",
+        "birthRetain": "false",
+        "birthPayload": "",
+        "birthMsg": {},
+        "closeTopic": "",
+        "closeQos": "0",
+        "closeRetain": "false",
+        "closePayload": "",
+        "closeMsg": {},
+        "willTopic": "",
+        "willQos": "0",
+        "willRetain": "false",
+        "willPayload": "",
+        "willMsg": {},
+        "userProps": "",
+        "sessionExpiry": ""
+    },
+    {
+        "id": "3664e6098199974d",
+        "type": "influxdb",
+        "hostname": "influxdb",
+        "port": 8086,
+        "protocol": "http",
+        "database": "database",
+        "name": "",
+        "usetls": false,
+        "tls": "",
+        "influxdbVersion": "1.x",
+        "url": "http://localhost:8086",
+        "timeout": 10,
+        "rejectUnauthorized": true
+    },
+    {
+        "id": "8661d6a97339e967",
+        "type": "influxdb",
+        "hostname": "127.0.0.1",
+        "port": 8086,
+        "protocol": "http",
+        "database": "database",
+        "name": "",
+        "usetls": false,
+        "tls": "",
+        "influxdbVersion": "2.0",
+        "url": "http://influxdb:8086",
+        "timeout": 10,
+        "rejectUnauthorized": true
+    },
+    {
+        "id": "b6455d3b02eec78c",
+        "type": "mqtt out",
+        "z": "1447ecba0f7f7ce8",
+        "name": "",
+        "topic": "parking/test",
+        "qos": "",
+        "retain": "",
+        "respTopic": "",
+        "contentType": "",
+        "userProps": "",
+        "correl": "",
+        "expiry": "",
+        "broker": "acc9c98f2b9397da",
+        "x": 350,
+        "y": 140,
+        "wires": []
+    },
+    {
+        "id": "615d8357a874036c",
+        "type": "mqtt in",
+        "z": "1447ecba0f7f7ce8",
+        "name": "",
+        "topic": "parking/test",
+        "qos": "2",
+        "datatype": "auto-detect",
+        "broker": "acc9c98f2b9397da",
+        "nl": false,
+        "rap": true,
+        "rh": 0,
+        "inputs": 0,
+        "x": 370,
+        "y": 220,
+        "wires": [
+            [
+                "2327366cb9f94052"
+            ]
+        ]
+    },
+    {
+        "id": "2327366cb9f94052",
+        "type": "debug",
+        "z": "1447ecba0f7f7ce8",
+        "name": "debug 1",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 580,
+        "y": 220,
+        "wires": []
+    },
+    {
+        "id": "d2833c76a846f425",
+        "type": "inject",
+        "z": "1447ecba0f7f7ce8",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "Hello Smart Parking",
+        "payloadType": "str",
+        "x": 210,
+        "y": 140,
+        "wires": [
+            [
+                "b6455d3b02eec78c"
+            ]
+        ]
+    },
+    {
+        "id": "3c952d7a742e7299",
+        "type": "influxdb out",
+        "z": "1447ecba0f7f7ce8",
+        "influxdb": "8661d6a97339e967",
+        "name": "",
+        "measurement": "parking",
+        "precision": "",
+        "retentionPolicy": "",
+        "database": "database",
+        "precisionV18FluxV20": "ms",
+        "retentionPolicyV18Flux": "",
+        "org": "Smart Data Technologies",
+        "bucket": "smartparking",
+        "x": 600,
+        "y": 320,
+        "wires": []
+    },
+    {
+        "id": "ff674c4c9107e784",
+        "type": "function",
+        "z": "1447ecba0f7f7ce8",
+        "name": "function 1",
+        "func": "msg.payload = {\n    slot: 5,\n    occupied: 1\n    \n};\n\nmsg.tags = {\n    location: \"A\"\n};\n\nreturn msg;\n",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 360,
+        "y": 320,
+        "wires": [
+            [
+                "3c952d7a742e7299"
+            ]
+        ]
+    },
+    {
+        "id": "72db2fca2cc71022",
+        "type": "inject",
+        "z": "1447ecba0f7f7ce8",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "smart parking",
+        "payloadType": "str",
+        "x": 190,
+        "y": 320,
+        "wires": [
+            [
+                "ff674c4c9107e784"
+            ]
+        ]
+    }
+]

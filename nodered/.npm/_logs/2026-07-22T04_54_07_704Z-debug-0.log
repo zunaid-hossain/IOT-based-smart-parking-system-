@@ -1,0 +1,38 @@
+0 verbose cli /usr/local/bin/node /usr/src/node-red/node_modules/npm/bin/npm-cli.js
+1 info using npm@11.18.0
+2 info using node@v24.18.0
+3 silly config load:file:/usr/src/node-red/node_modules/npm/npmrc
+4 silly config load:file:/data/.npmrc
+5 silly config load:file:/usr/src/node-red/.npmrc
+6 silly config load:file:/usr/local/etc/npmrc
+7 verbose title npm install node-red-node-ui-table@0.4.5
+8 verbose argv "install" "--no-audit" "--no-update-notifier" "--no-fund" "--save" "--save-prefix" "~" "--omit" "dev" "--engine-strict" "--" "node-red-node-ui-table@0.4.5"
+9 verbose logfile logs-max:10 dir:/data/.npm/_logs/2026-07-22T04_54_07_704Z-
+10 verbose logfile /data/.npm/_logs/2026-07-22T04_54_07_704Z-debug-0.log
+11 silly logfile done cleaning log files
+12 silly packumentCache heap:2348810240 maxSize:587202560 maxEntrySize:293601280
+13 silly idealTree buildDeps
+14 silly fetch manifest node-red-node-ui-table@0.4.5
+15 silly packumentCache full:https://registry.npmjs.org/node-red-node-ui-table cache-miss
+16 http fetch GET 200 https://registry.npmjs.org/node-red-node-ui-table 464ms (cache miss)
+17 silly packumentCache full:https://registry.npmjs.org/node-red-node-ui-table set size:undefined disposed:false
+18 silly fetch manifest node-red-dashboard@~3.6.6
+19 silly packumentCache full:https://registry.npmjs.org/node-red-dashboard cache-miss
+20 http cache https://registry.npmjs.org/node-red-dashboard 28ms (cache hit)
+21 silly packumentCache full:https://registry.npmjs.org/node-red-dashboard set size:549868 disposed:false
+22 silly placeDep ROOT node-red-node-ui-table@0.4.5 OK for: node-red-project@0.0.1 want: 0.4.5
+23 silly reify moves {}
+24 http cache node-red-node-ui-table@https://registry.npmjs.org/node-red-node-ui-table/-/node-red-node-ui-table-0.4.5.tgz 0ms (cache hit)
+25 silly tarball no local data for node-red-node-ui-table@https://registry.npmjs.org/node-red-node-ui-table/-/node-red-node-ui-table-0.4.5.tgz. Extracting by manifest.
+26 http fetch GET 200 https://registry.npmjs.org/node-red-node-ui-table/-/node-red-node-ui-table-0.4.5.tgz 878ms (cache miss)
+27 silly ADD node_modules/node-red-node-ui-table
+28 warn allow-scripts 1 package has install scripts not yet covered by allowScripts:
+28 warn allow-scripts   node-red-dashboard@3.6.6 (postinstall: node fixgrid.js)
+28 warn allow-scripts
+28 warn allow-scripts Run `npm install-scripts ls` to review, or `npm install-scripts approve <pkg>` to allow.
+29 verbose cwd /data
+30 verbose os Linux 6.18.33.2-microsoft-standard-WSL2
+31 verbose node v24.18.0
+32 verbose npm  v11.18.0
+33 verbose exit 0
+34 info ok
